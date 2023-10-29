@@ -7,7 +7,7 @@ const router = Router()
 
 router.use('/', root)
 router.use('/api', api)
-router.app.use('/favicon.ico', (req, res) => res.status(204))
+router.use('/favicon.ico', (req, res) => res.status(204))
 
 
 
