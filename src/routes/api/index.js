@@ -6,11 +6,9 @@ import persons from './persons';
 const router = Router();
 
 dotenv.config()
-router.use(
-  basicAuth({
-    users: { [process.env.ADMIN_USER]: process.env.ADMIN_PASSWORD },
-  })
-);
+basicAuth({
+  users: { [process.env.ADMIN_USER]: process.env.ADMIN_PASSWORD },
+})
 
 router.get('/', (req, res) => {
   res.send({ msg: 'Inside API Endpoints' });
