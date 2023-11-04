@@ -9,4 +9,6 @@ COPY . .
 
 RUN npm run build
 
+RUN npx prisma generate
+
 CMD [ "npm", "run", "start" ]
