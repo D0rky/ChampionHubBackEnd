@@ -3,6 +3,7 @@ import basicAuth from 'express-basic-auth'
 import dotenv from 'dotenv'
 import persons from './persons'
 import companies from './companies'
+import departments from './departments'
 
 const router = Router();
 
