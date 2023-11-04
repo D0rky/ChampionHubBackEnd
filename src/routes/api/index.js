@@ -1,7 +1,8 @@
-import { Router } from 'express';
-import basicAuth from 'express-basic-auth';
-import dotenv from 'dotenv';
-import persons from './persons';
+import { Router } from 'express'
+import basicAuth from 'express-basic-auth'
+import dotenv from 'dotenv'
+import persons from './persons'
+import companies from './companies'
 
 const router = Router();
 
@@ -11,9 +12,10 @@ basicAuth({
 })
 
 router.get('/', (req, res) => {
-  res.send({ msg: 'Inside API Endpoints' });
+  res.send({ msg: 'Inside API Endpoints' })
 });
 
-router.use('/persons', persons);
+router.use('/persons', persons)
+router.use('/companies', companies)
 
 export default router;
