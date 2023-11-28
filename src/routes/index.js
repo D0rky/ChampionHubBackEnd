@@ -1,14 +1,15 @@
-import { Router } from "express";
+import { Router } from 'express';
+import root from './root'; // Assuming 'root.js' contains your root path logic
+import ChampionControlRouter from './api/ChampionControl'; // Assuming 'ChampionControl.js' contains ChampionHub-related logic
 
-import root from './root'
-import api from './api'
+const router = Router();
 
-const router = Router()
-
-router.use('/', root)
-router.use('/api', api)
-router.use('/favicon.ico', (req, res) => res.status(204))
+router.use('/', root); // Using the root path logic
+router.use('/championhub', ChampionControlRouter); // Using ChampionHub-related routes under '/championhub'
 
 
 
-export default router
+// Handling the favicon.ico request with a 204 status
+router.use('/favicon.ico', (req, res) => res.status(204).end());
+
+export default router;
