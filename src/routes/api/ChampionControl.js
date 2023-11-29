@@ -43,6 +43,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Adjust the POST route to add a new champion
 router.post('/', async (req, res) => {
   const championData = req.body;
 
@@ -54,6 +55,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Adjust the PUT route to update an existing champion
 router.put('/:id', async (req, res) => {
   const id = req.params.id;
   const championData = req.body;
@@ -70,6 +72,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// Adjust the DELETE route to delete an existing champion
 router.delete('/:id', async (req, res) => {
   const id = req.params.id;
 
@@ -84,5 +87,3 @@ router.delete('/:id', async (req, res) => {
     res.status(500).send({ error: 'Internal Server Error' });
   }
 });
-
-export default router;

@@ -7,12 +7,10 @@ const router = Router();
 
 dotenv.config();
 
-// Basic authentication setup
-router.use(basicAuth({
+// Using basicAuth middleware for a specific route ('/')
+router.get('/', basicAuth({
   users: { [process.env.ADMIN_USER]: process.env.ADMIN_PASSWORD },
-}));
-
-router.get('/', (req, res) => {
+}), (req, res) => {
   res.send({ msg: 'Welcome to ChampionHub API' }); // Update the welcome message if needed
 });
 
