@@ -17,6 +17,5 @@ router.get('/', basicAuth({
 // Using ChampionControlRouter for champion-related endpoints
 router.use('/champions', ChampionControlRouter);
 
-// Handle other route handlers if necessary (persons, companies, departments, employees, etc.)
 
 export default router;

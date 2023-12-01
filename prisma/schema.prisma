@@ -10,11 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Champion {
-  championId  String    @id @default(uuid())
-  name        String
-  role        String
-  region      String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+model Champions {
+  id           Int      @id @default(autoincrement())
+  text         String?
+  key          Int?
+  name         String?
+  title        String?
+  tags         String?
+  stats        Float?
+  description  String?
 }
