@@ -10,11 +10,13 @@ export const notFound = (req, res, next) => {
 export const errorHandler = (error, req, res, next) => {
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode
 
-  logger.error(new Error(error.message))
+  const errorMessage = error.message || 'Internal Server Error'
+
+  logger.error(new Error(errorMessage))
 
   res.status(statusCode)
   res.json({
-    message: error.message,
-    stack: process.env.NODE_ENV === 'production' ? '💩' : error.stack,
+    message: errorMessage,
+    stack: process.env.NODE_ENV === 'production' ? '💩' : error.stack || 'No stack trace available',
   })
 }

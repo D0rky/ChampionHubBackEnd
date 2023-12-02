@@ -21,7 +21,7 @@ export const updateChampion = async (id, championData) => {
     });
     return updatedChampion;
   } catch (error) {
-    throw new Error(`Failed to update champion with ID ${id}`);
+    throw new Error(`Failed to update champion with ID ${id}: ${error.message}`);
   }
 };
 
@@ -32,11 +32,11 @@ export const deleteChampion = async (id) => {
     });
     return deletedChampion;
   } catch (error) {
-    throw new Error(`Failed to delete champion with ID ${id}`);
+    throw new Error(`Failed to delete champion with ID ${id}: ${error.message}`);
   }
 };
 
-export const getChampions = async (page = 0, size = 10) => {
+export const getChampions = async (page = 1, size = 10) => {
   try {
     const skip = size * (page - 1);
     const take = size;
@@ -46,11 +46,10 @@ export const getChampions = async (page = 0, size = 10) => {
       take,
     });
 
-    const count = await prisma.champion.count(); 
+    const count = await prisma.champion.count();
 
     return { count, champions };
   } catch (error) {
     throw new Error('Failed to fetch champions from the database');
   }
 };
-
