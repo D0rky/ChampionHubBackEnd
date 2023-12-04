@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', (req, res) => {
     logger.info('Inside the ChampionHub root path'); 
-    const title = process.env.APP_TITLE || 'ChampionHub Server'; 
+    const title = process.env.TITLE || 'ChampionHub Server'; 
     res.send({ msg: title });
 });
 
