@@ -10,8 +10,9 @@ export const getChampions = async (skip, take) => {
 }
 
 
-export const getChampion = async (id) =>
-  db.Champions.findUnique({ where: { championId: id } });
+export const getChampion = async (championId) =>
+  db.Champions.findUnique({ where: { id: championId } });
+
 
 
 
