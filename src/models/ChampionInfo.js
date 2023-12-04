@@ -36,5 +36,33 @@ export const updateChampion = async (id, championData) => {
 
 
 
-export const deleteChampion = async (id) =>
-  db.Champions.delete({ where: { championId: id } });
+export const deleteChampion = async (championId) => {
+  try {
+    // Check if the record exists before attempting to delete
+    const existingChampion = await db.Champions.findUnique({
+      where: {
+        id: championId // Assuming 'id' is the field name for championId
+      }
+    });
+
+    if (!existingChampion) {
+      // If the record doesn't exist, handle the scenario accordingly
+      console.log(`Champion with ID ${championId} does not exist.`);
+      return null; // Or throw an error, depending on your application flow
+    }
+
+    // If the record exists, proceed with deletion
+    const deletedChampion = await db.Champions.delete({
+      where: {
+        id: championId // Assuming 'id' is the field name for championId
+      }
+    });
+
+    console.log(`Champion with ID ${championId} has been deleted successfully.`);
+    return deletedChampion;
+  } catch (error) {
+    console.error(`Error deleting champion with ID ${championId}:`, error);
+    throw new Error(`Error deleting champion with ID ${championId}: ${error.message}`);
+  }
+};
+
