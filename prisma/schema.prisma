@@ -8,11 +8,12 @@ datasource db {
 }
 
 model Champions {
-  id          String @id(map: "champions_pkey")
-  key         Int    @unique(map: "champions_key_key") @default(autoincrement())
-  name        String @default("Champion Name")
-  title       String @default("Title")
-  tags        String @default("Support")
-  stats       Float  @default(0)
-  description String @default("Description")
+  id          String  @id
+  key         BigInt?
+  name        String?
+  title       String?
+  tags        String?
+  stats       Float?
+  description String?
+  icon        String?
 }
